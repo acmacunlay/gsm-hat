@@ -16,10 +16,6 @@ setup(
   url = 'https://github.com/Civlo85/gsmHat',
   download_url = 'https://github.com/Civlo85/gsmHat/archive/v_04.tar.gz',
   keywords = ['Waveshare', 'GSM', 'GPS', 'Raspberry', 'Pi'],
-  install_requires=[
-          'serial',
-          'datetime'
-      ],
   classifiers=[
     'Development Status :: 3 - Alpha',      # Chose either "3 - Alpha", "4 - Beta" or "5 - Production/Stable" as the current state of your package
     'Intended Audience :: Developers',

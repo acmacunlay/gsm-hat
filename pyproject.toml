@@ -1,0 +1,9 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pywaveshare"
+version = "0.1.0"
+dependencies = ["serial"]
+keywords = ["Waveshare", "GSM", "GPS", "Raspberry", "Pi"]
