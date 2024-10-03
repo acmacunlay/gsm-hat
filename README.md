@@ -42,7 +42,7 @@ $ python3 -m pip install -U gsmHat
 1. Import gsmHat to your project
 
 ```Python
-from gsmHat import GSMHat, SMS, GPS
+from pywaveshare.boards.deprecated import GSMHat, SMS, GPS
 ```
 
 2. Init gsmHat
