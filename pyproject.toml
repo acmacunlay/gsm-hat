@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pywaveshare"
+version = "0.5.0a0"
+dependencies = ["RPi.GPIO"]
+requires-python = ">=3.12"
+authors = [
+    { name = "Tarek Tounsi", email = "software@tounsi.de" },
+    { name = "Achilles Macunlay", email = "achilles.macunlay+github@gmail.com" },
+]
+description = "Waveshare GSM/GPRS/GNSS Hat (SIM868) controller for Raspberry Pi"
+readme = "README.md"
+license = { file = "LICENSE" }
+keywords = ["Waveshare", "GSM", "GPS", "Raspberry", "Pi"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Topic :: Software Development :: Build Tools",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+]
+
+[project.urls]
+Homepage = "https://github.com/acmacunlay/pywaveshare"
+Repository = "https://github.com/acmacunlay/pywaveshare.git"
+# TODO: Changelog = ""
