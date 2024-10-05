@@ -1,6 +1,6 @@
 # pywaveshare - Waveshare GSM/GPRS/GNSS HAT Controller for Raspberry Pi
 
-With pywaveshare, you can easily use the functionality of the [Waveshare GSM/GPRS/GNSS HAT for Raspberry Pi](https://www.waveshare.com/gsm-gprs-gnss-hat.htm). On this module a SIM868 Controller is doing the job to connect your Raspberry Pi with the world just by using a sim card.
+With pywaveshare, you can easily use the functionality of the [Waveshare GSM/GPRS/GNSS HAT for Raspberry Pi](https://www.waveshare.com/gsm-gprs-gnss-hat.htm). On this module a SIM868 Controller is doing the job to connect your Raspberry Pi with the world just by using a SIM card.
 
 ## Changelog
 [See this document.](CHANGELOG.md)
