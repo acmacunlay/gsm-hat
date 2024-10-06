@@ -134,7 +134,7 @@ class GSMHat:
         self.__workerThread.join(10.0)  # Timeout = 10.0 Seconds
 
     def __sendToHat(self, string):
-        if self.__writeLock == False:
+        if not self.__writeLock:
             self.__lastCommandSentString = string
             string = string + "\n"
             self.__ser.write(string.encode("iso-8859-1"))
@@ -336,9 +336,9 @@ class GSMHat:
                     rawData = match[0][1].split(",")
                     self.__GPRSgotHttpResponse = True
                     if len(rawData) == 3:
-                        requestMethod = int(rawData[0])
+                        # requestMethod = int(rawData[0])
                         httpStatus = int(rawData[1])
-                        recvDataLength = int(rawData[2])
+                        # recvDataLength = int(rawData[2])
                         if httpStatus == 200:  # Successful request
                             self.__GPRSnewDataReceived = True
                         elif httpStatus == 601:  # Successful request
@@ -378,7 +378,7 @@ class GSMHat:
 
                         try:
                             newGPS.GNSS_status = int(rawData[0])
-                        except:
+                        except Exception:
                             self.__logger.debug(
                                 "GNSS_status: Could not convert "
                                 + rawData[0]
@@ -390,7 +390,7 @@ class GSMHat:
                             newGPS.Fix_status = int(rawData[1])
                             if newGPS.Fix_status == 0:
                                 goodPosition = False
-                        except:
+                        except Exception:
                             self.__logger.debug(
                                 "Fix_status: Could not convert "
                                 + rawData[1]
@@ -401,7 +401,7 @@ class GSMHat:
                             newGPS.UTC = datetime.strptime(
                                 rawData[2][:-4], "%Y%m%d%H%M%S"
                             )
-                        except:
+                        except Exception:
                             self.__logger.debug(
                                 "UTC: Could not convert " + rawData[2][:-4] + " to int."
                             )
@@ -410,7 +410,7 @@ class GSMHat:
                             newGPS.Latitude = float(rawData[3])
                             if newGPS.Latitude == 0.0:
                                 goodPosition = False
-                        except:
+                        except Exception:
                             self.__logger.debug(
                                 "Latitude: Could not convert "
                                 + rawData[3]
@@ -421,7 +421,7 @@ class GSMHat:
                             newGPS.Longitude = float(rawData[4])
                             if newGPS.Longitude == 0.0:
                                 goodPosition = False
-                        except:
+                        except Exception:
                             self.__logger.debug(
                                 "Longitude: Could not convert "
                                 + rawData[4]
@@ -432,7 +432,7 @@ class GSMHat:
                             newGPS.Altitude = float(rawData[5])
                             if newGPS.Altitude == 0.0:
                                 goodPosition = False
-                        except:
+                        except Exception:
                             self.__logger.debug(
                                 "Altitude: Could not convert "
                                 + rawData[5]
@@ -441,21 +441,21 @@ class GSMHat:
 
                         try:
                             newGPS.Speed = float(rawData[6])
-                        except:
+                        except Exception:
                             self.__logger.debug(
                                 "Speed: Could not convert " + rawData[6] + " to float."
                             )
 
                         try:
                             newGPS.Course = float(rawData[7])
-                        except:
+                        except Exception:
                             self.__logger.debug(
                                 "Course: Could not convert " + rawData[7] + " to float."
                             )
 
                         try:
                             newGPS.HDOP = float(rawData[10])
-                        except:
+                        except Exception:
                             self.__logger.debug(
                                 "HDOP: Could not convert " + rawData[10] + " to float."
                             )
@@ -464,21 +464,21 @@ class GSMHat:
                             newGPS.PDOP = float(rawData[11])
                             if newGPS.PDOP == 0.0:
                                 goodPosition = False
-                        except:
+                        except Exception:
                             self.__logger.debug(
                                 "PDOP: Could not convert " + rawData[11] + " to float."
                             )
 
                         try:
                             newGPS.VDOP = float(rawData[12])
-                        except:
+                        except Exception:
                             self.__logger.debug(
                                 "VDOP: Could not convert " + rawData[12] + " to float."
                             )
 
                         try:
                             newGPS.GPS_satellites = int(rawData[14])
-                        except:
+                        except Exception:
                             self.__logger.debug(
                                 "GPS_satellites: Could not convert "
                                 + rawData[14]
@@ -487,7 +487,7 @@ class GSMHat:
 
                         try:
                             newGPS.GNSS_satellites = int(rawData[15])
-                        except:
+                        except Exception:
                             self.__logger.debug(
                                 "GNSS_satellites: Could not convert "
                                 + rawData[15]
@@ -496,7 +496,7 @@ class GSMHat:
 
                         try:
                             newGPS.Signal = float(rawData[18]) / 55.0
-                        except:
+                        except Exception:
                             self.__logger.debug(
                                 "Signal: Could not convert "
                                 + rawData[18]
@@ -598,7 +598,7 @@ class GSMHat:
                     self.__state = 21
             elif self.__state == 21:
                 if self.__waitForUnlock():
-                    if self.__smsToBuild == None:
+                    if self.__smsToBuild is None:
                         # An der Stelle self.__smsToRead gab es keine SMS zu lesen
                         pass
                     else:
@@ -655,7 +655,7 @@ class GSMHat:
 
             elif self.__state == 42:
                 # Wait x Seconds
-                if actTime > self.__waitTime or self.__sendHangUp == True:
+                if actTime > self.__waitTime or self.__sendHangUp:
                     self.__numberToCall = ""
                     self.__sendHangUp = True
                     self.__state = 97
@@ -706,13 +706,13 @@ class GSMHat:
             elif self.__state == 61:
                 if self.__waitForUnlock():
                     tempState = 97
-                    if self.__GPRSready == True:
+                    if self.__GPRSready:
                         pass
                     else:
                         if (
-                            self.__GPRSuserAPN != None
-                            and self.__GPRSuserUSER != None
-                            and self.__GPRSuserPWD != None
+                            (self.__GPRSuserAPN is not None)
+                            and (self.__GPRSuserUSER is not None)
+                            and (self.__GPRSuserPWD is not None)
                         ):
                             # try to connect
                             tempState = 62
@@ -813,7 +813,7 @@ class GSMHat:
                 elif (
                     len(self.__GPRScallUrlList) > 0
                     and self.__GPRSready
-                    and self.__GPRSwaitForData == False
+                    and (not self.__GPRSwaitForData)
                 ):
                     self.__state = 70
 
