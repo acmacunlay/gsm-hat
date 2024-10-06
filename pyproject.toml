@@ -44,3 +44,7 @@ dev = ["build", "mypy", "pytest", "ruff", "setuptools", "twine"]
 Homepage = "https://github.com/acmacunlay/pywaveshare"
 Repository = "https://github.com/acmacunlay/pywaveshare.git"
 # TODO: Changelog = ""
+
+[[tool.mypy.overrides]]
+module = ["RPi", "RPi.GPIO", "serial"]
+ignore_missing_imports = true
