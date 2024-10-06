@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "pywaveshare"
 version = "0.5.0a0"
 dependencies = ["RPi.GPIO", "pyserial"]
-requires-python = ">=3.8"
+requires-python = ">=3.7"
 authors = [{ name = "Tarek Tounsi", email = "software@tounsi.de" }]
 maintainers = [
     { name = "Achilles Macunlay", email = "achilles.macunlay+github@gmail.com" },
