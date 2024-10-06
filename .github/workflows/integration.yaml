@@ -38,3 +38,4 @@ jobs:
       - name: Lint with ruff
         run: |
           ruff check . --select I
+          ruff check .
