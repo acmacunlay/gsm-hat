@@ -38,7 +38,7 @@ classifiers = [
 ]
 
 [project.optional-dependencies]
-dev = ["build", "mypy", "pytest", "ruff", "setuptools", "twine"]
+dev = ["build", "coverage", "mypy", "pytest", "ruff", "setuptools", "twine"]
 
 [project.urls]
 Homepage = "https://github.com/acmacunlay/pywaveshare"
