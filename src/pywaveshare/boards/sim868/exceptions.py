@@ -1,0 +1,2 @@
+class WaveshareException(Exception):
+    pass
