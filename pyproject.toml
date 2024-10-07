@@ -43,7 +43,7 @@ dev = ["build", "coverage", "mypy", "pytest", "ruff", "setuptools", "twine"]
 [project.urls]
 Homepage = "https://github.com/acmacunlay/pywaveshare"
 Repository = "https://github.com/acmacunlay/pywaveshare.git"
-# TODO: Changelog = ""
+Changelog = "https://github.com/acmacunlay/pywaveshare/blob/main/CHANGELOG.md"
 
 [[tool.mypy.overrides]]
 module = ["RPi", "RPi.GPIO", "serial"]
