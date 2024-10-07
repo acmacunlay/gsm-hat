@@ -3,7 +3,7 @@
 With pywaveshare, you can easily use the functionality of the [Waveshare GSM/GPRS/GNSS HAT for Raspberry Pi](https://www.waveshare.com/gsm-gprs-gnss-hat.htm). On this module a SIM868 Controller is doing the job to connect your Raspberry Pi with the world just by using a SIM card.
 
 ## Changelog
-[See this document.](CHANGELOG.md)
+[See this document.](https://github.com/acmacunlay/pywaveshare/blob/master/CHANGELOG.md)
 
 ## Overview
 pywaveshare was written for Python 3. It provides the following features
@@ -180,4 +180,4 @@ if gsm.UrlResponse_available() > 0:
 
 
 ## License
-[See this document.](LICENSE)
+[See this document.](https://github.com/acmacunlay/pywaveshare/blob/master/LICENSE)
