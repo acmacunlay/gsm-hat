@@ -6,7 +6,7 @@ name: pywaveshare
 on:
   push:
     branches:
-      - "master"
+      - "main"
       - "develop"
       - "feature/*"
       - "bugfix/*"
@@ -14,7 +14,7 @@ on:
       - "release/*"
   pull_request:
     branches:
-      - "master"
+      - "main"
       - "develop"
       - "feature/*"
       - "bugfix/*"
