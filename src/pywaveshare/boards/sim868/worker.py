@@ -1,6 +1,6 @@
 import threading
 
-from . import config, itc
+from . import config, itc, protocols
 
 
 class Worker(threading.Thread):
@@ -10,6 +10,7 @@ class Worker(threading.Thread):
         super().__init__()
 
         self.config = config
+        self.protocols = protocols.SupportedProtocolFactory()
 
     def run(self) -> None:
         while itc.IS_WORKER_RUNNING.is_set():
