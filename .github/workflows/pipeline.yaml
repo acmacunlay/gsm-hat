@@ -54,6 +54,10 @@ jobs:
         run: |
           mypy .
 
-      - name: Run unit tests
+      - name: Run common security issue checker
         run: |
-          pytest .
+          bandit -c pyproject.toml -r .
+      
+      - name: Run unit tests + code coverage
+        run: |
+          coverage run -m pytest .
