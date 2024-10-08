@@ -4,6 +4,8 @@ from . import config, itc
 
 
 class Worker(threading.Thread):
+    logger = config.get_logger("worker")
+
     def __init__(self, config: config.Config) -> None:
         super().__init__()
 

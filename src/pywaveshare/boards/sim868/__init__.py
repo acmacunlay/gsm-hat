@@ -320,7 +320,7 @@ class GSMHat:
                     rawData = match[0][1].split(",")
                     self.__GPRSIPaddress = rawData[2].replace('"', "")
 
-                    if self.__GPRSIPaddress != "0.0.0.0":
+                    if self.__GPRSIPaddress != "0.0.0.0":  # nosec
                         self.__GPRSready = True
                     else:
                         self.__GPRSready = False
