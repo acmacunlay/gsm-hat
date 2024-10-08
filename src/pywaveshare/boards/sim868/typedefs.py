@@ -1,6 +1,8 @@
 import typing
 
-SMSSend = typing.TypedDict(
+import typing_extensions
+
+SMSSend = typing_extensions.TypedDict(
     "SMSSend",
     {
         "Recipients": typing.List[str],

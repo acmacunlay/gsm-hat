@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "pywaveshare"
 version = "0.5.0a0"
-dependencies = ["RPi.GPIO", "pyserial"]
+dependencies = ["pyserial", "RPi.GPIO", "typing-extensions"]
 requires-python = ">=3.7"
 authors = [{ name = "Tarek Tounsi", email = "software@tounsi.de" }]
 maintainers = [
