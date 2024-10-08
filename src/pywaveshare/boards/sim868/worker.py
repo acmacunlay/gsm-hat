@@ -12,6 +12,5 @@ class Worker(threading.Thread):
         self.config = config
 
     def run(self) -> None:
-        itc.IS_WORKER_RUNNING.set()
         while itc.IS_WORKER_RUNNING.is_set():
             pass
