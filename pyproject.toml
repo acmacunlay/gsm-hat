@@ -38,7 +38,16 @@ classifiers = [
 ]
 
 [project.optional-dependencies]
-dev = ["build", "coverage", "mypy", "pytest", "ruff", "setuptools", "twine"]
+dev = [
+    "bandit",
+    "build",
+    "coverage",
+    "mypy",
+    "pytest",
+    "ruff",
+    "setuptools",
+    "twine",
+]
 
 [project.urls]
 Homepage = "https://github.com/acmacunlay/pywaveshare"
@@ -48,3 +57,6 @@ Changelog = "https://github.com/acmacunlay/pywaveshare/blob/main/CHANGELOG.md"
 [[tool.mypy.overrides]]
 module = ["RPi", "RPi.GPIO", "serial"]
 ignore_missing_imports = true
+
+[tool.bandit]
+exclude_dirs = ["tests", ".venv"]
