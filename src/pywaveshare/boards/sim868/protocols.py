@@ -1,5 +1,8 @@
 import abc
+import typing
 
 
 class SupportedProtocol(abc.ABC):
-    pass
+    NAME: typing.Optional[str] = None
+
+    RESPONSE_PATTERN = r""
