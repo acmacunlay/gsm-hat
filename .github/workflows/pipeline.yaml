@@ -57,7 +57,7 @@ jobs:
       - name: Run common security issue checker
         run: |
           bandit -c pyproject.toml -r .
-      
+
       - name: Run unit tests + code coverage
         run: |
           coverage run -m pytest .

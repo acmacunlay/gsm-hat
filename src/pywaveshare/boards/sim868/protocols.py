@@ -1,4 +1,5 @@
 import abc
+import re
 import typing
 
 
@@ -29,3 +30,7 @@ class SupportedProtocolFactory:
 if __name__ == "__main__":
     protocol = SMS()
     print(protocol.RESPONSE_PATTERN)
+    DATA = "OK\r\n"
+    match = re.fullmatch(r"OK\r\n", DATA)
+    print(match)
+    print(match.string if match is not None else None)
