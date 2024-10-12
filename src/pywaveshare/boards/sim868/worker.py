@@ -57,10 +57,10 @@ class Worker(threading.Thread):
         return WorkerState.LISTEN_TO_SOURCES
 
     def on_restart(self) -> WorkerState:
-        pass
+        return WorkerState.STARTUP
 
     def on_shutdown(self) -> None:
-        pass
+        return None
 
     def on_listen_to_sources(self) -> WorkerState:
         with itc.ACQUIRE_CLIENT_TX_DATA:
