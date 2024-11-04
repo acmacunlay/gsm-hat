@@ -5,12 +5,9 @@ import threading
 
 IS_WORKER_RUNNING = threading.Event()
 
-SERIAL_LOCK = threading.Lock()
-C2W_Q_LOCK = threading.Lock()
-"""
-If acquired, then the acquirer can to safely work on `CLIENT_TO_WORKER_Q` queue.
-"""
+ACQUIRE_CLIENT_TX_DATA = threading.Lock()
+ACQUIRE_SERIAL_RX_DATA = threading.Lock()
 
-CLIENT_TO_WORKER_Q: queue.Queue[bytes] = queue.Queue()
-WORKER_TO_SERIAL_Q: queue.Queue[bytes] = queue.Queue()
-SERIAL_TO_WORKER_Q: queue.Queue[bytes] = queue.Queue()
+CLIENT_TX_Q: queue.Queue[bytes] = queue.Queue()
+SERIAL_RX_Q: queue.Queue[bytes] = queue.Queue()
+SERIAL_TX_Q: queue.Queue[bytes] = queue.Queue()

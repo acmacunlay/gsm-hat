@@ -5,8 +5,8 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "pywaveshare"
 version = "0.5.0a0"
-dependencies = ["pyserial", "RPi.GPIO", "typing-extensions"]
-requires-python = ">=3.7"
+dependencies = ["pyserial", "RPi.GPIO"]
+requires-python = ">=3.8"
 authors = [{ name = "Tarek Tounsi", email = "software@tounsi.de" }]
 maintainers = [
     { name = "Achilles Macunlay", email = "achilles.macunlay+github@gmail.com" },
@@ -29,7 +29,6 @@ classifiers = [
     "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.7",
     "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
@@ -38,16 +37,8 @@ classifiers = [
 ]
 
 [project.optional-dependencies]
-dev = [
-    "bandit",
-    "build",
-    "coverage",
-    "mypy",
-    "pytest",
-    "ruff",
-    "setuptools",
-    "twine",
-]
+dev = ["bandit", "coverage", "mypy", "pytest", "ruff"]
+publish = ["build", "setuptools", "twine"]
 
 [project.urls]
 Homepage = "https://github.com/acmacunlay/pywaveshare"
