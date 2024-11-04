@@ -1,8 +1,10 @@
 __pycache__
 *.egg-info
+*.log
+.coverage
 .mypy_cache
+.pypirc
 .pytest_cache
 .ruff_cache
-.pypirc
 .venv
 dist
