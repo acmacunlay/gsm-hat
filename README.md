@@ -23,13 +23,13 @@ This project attempts to wrap all features and functionalities of [Waveshare GSM
 ### 3.2. System Requirements
 ### 3.3. Installation Steps
 
-You can download the stable version in `pypi` using `pip`:
+You can download the stable version in [pypi](https://pypi.org/) using `pip`:
 
 ```shell
 pip install pywaveshare
 ```
 
-If the user wants to test out the version under development, then download the package from test.pypi.org using `pip`:
+If the user wants to test out the version under development, then download the package from [test.pypi.org](https://test.pypi.org/) using `pip`:
 
 ```shell
 pip install -i https://test.pypi.org/simple/ pywaveshare
