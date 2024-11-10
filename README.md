@@ -1,183 +1,72 @@
-# pywaveshare - Waveshare GSM/GPRS/GNSS HAT Controller for Raspberry Pi
+# pywaveshare
 
-With pywaveshare, you can easily use the functionality of the [Waveshare GSM/GPRS/GNSS HAT for Raspberry Pi](https://www.waveshare.com/gsm-gprs-gnss-hat.htm). On this module a SIM868 Controller is doing the job to connect your Raspberry Pi with the world just by using a SIM card.
+## 1. Introduction
 
-## Changelog
-[See this document.](https://github.com/acmacunlay/pywaveshare/blob/main/CHANGELOG.md)
+### 1.1. Purpose
+### 1.2. Scope
+### 1.3. Audience
 
-## Overview
-pywaveshare was written for Python 3. It provides the following features
+## 2. System Overview
 
-- Non-blocking receiving and sending SMS in background
-- Non-blocking calling
-- Non-blocking refreshing of actual GPS position
-- Non-blocking URL Call and receiving of response
+### 2.1. Architecture
+### 2.2. Technologies Used
+### 2.3. Dependencies
 
-## Quickstart
+## 3. Installation
 
-In the following paragraphs, I am going to describe how you can get and use pywaveshare for your own projects.
+### 3.1. Prerequisites
+### 3.2. System Requirements
+### 3.3. Installation Steps
 
-### Download
+## 4. Configuration
 
-To download pywaveshare, either fork this github repo or simply use pypi via pip.
+### 4.1. Configuration Parameters
+### 4.2. Environment Setup
+### 4.3. External Services Integration
 
-```sh
-$ python3 -m pip install -U pywaveshare
-```
+## 5. Usage
 
-### Setup
+### 5.1. User Interface Overview
+### 5.2. User Authentication
+### 5.3. Core Functionality
+### 5.4. Advanced Features
+### 5.5. Troubleshooting
 
-* Install your sim card in your module, connect the GSM and the GPS antennas and mount the module on the pin headers of your Raspberry Pi. Make sure, that you **do not** need to enter Pin Code to use your card. Pin Codes are not supported yet.
+## 6. API Documentation
 
-* Enable the UART Interface in your Raspberry Pi
+### 6.1. Endpoints
+### 6.2. Requests and Response Formats
+### 6.3. Authentication and Authorization
 
-    - Start raspi-config: `sudo raspi-config`.
-    - Select option 5 - interfacing options.
-    - Select option P6 - serial.
-    - At the prompt `Would you like a login shell to be accessible over serial?` answer 'No'
-    - At the prompt `Would you like the serial port hardware to be enabled?` answer 'Yes'
-    - Exit raspi-config and reboot the Pi for changes to take effect.
+## 7. Database Schema
 
-### Usage
+### 7.1. Entity-Relationship Diagram
+### 7.2. Table Definitions
+### 7.3. Relationships and Constraints
 
-1. Import gsmHat to your project
+## 8. Testing
 
-```python
-from pywaveshare.boards.sim868 import GSMHat, SMS, GPS
-```
+### 8.1. Test Plan
+### 8.2. Test Cases
+### 8.3. Test Results
 
-2. Create an instance
+## 9. Deployment
 
-```python
-gsm = GSMHat('/dev/ttyS0', 115200)
-```
+### 9.1. Deployment Process
+### 9.2. Release Notes
+### 9.3. Known Issues and Limitations
 
-3. Check, if new SMS are available in your main loop
+## 10. Support and Maintenance
 
-```python
-# Check, if new SMS is available
-if gsm.SMS_available() > 0:
-    # Get new SMS
-    newSMS = gsm.SMS_read()
-    # Do something with it
-```
+### 10.1. Troubleshooting Guide
+### 10.2. Frequently Asked Questions (FAQs)
+### 10.3. Contact Information
 
-4. Do something with your newly received SMS
+## 11. Change Log
 
-```python
-# Get new SMS
-newSMS = gsm.SMS_read()
+### 11.1. Version History
+### 11.2. Change Summary
 
-print('Got new SMS from number %s' % newSMS.Sender)
-print('It was received at %s' % newSMS.Date)
-print('The message is: %s' % newSMS.Message)
-```
+## 12. Glossary
 
-5. You can also write SMS
-
-```python
-Number = '+491601234567'
-Message = 'Hello mobile world'
-
-# Send SMS
-gsm.SMS_write(Number, Message)
-```
-
-6. Or you can call a number
-
-```python
-Number = '+491601234567'
-gsm.Call(Number)        # This call hangs up automatically after 15 seconds
-time.sleep(10)          # Wait 10 seconds ...
-gsm.HangUp()            # Or you can HangUp by yourself earlier
-gsm.Call(Number, 60)    # Or lets change the timeout to 60 seconds. This call hangs up automatically after 60 seconds
-```
-
-7. Lets see, where your Raspberry Pi (in a car or on a motocycle or on a cat?) is positioned on earth
-
-```python
-# Get actual GPS position
-GPSObj = gsm.GetActualGPS()
-
-# Lets print some values
-print('GNSS_status: %s' % str(GPSObj.GNSS_status))
-print('Fix_status: %s' % str(GPSObj.Fix_status))
-print('UTC: %s' % str(GPSObj.UTC))
-print('Latitude: %s' % str(GPSObj.Latitude))
-print('Longitude: %s' % str(GPSObj.Longitude))
-print('Altitude: %s' % str(GPSObj.Altitude))
-print('Speed: %s' % str(GPSObj.Speed))
-print('Course: %s' % str(GPSObj.Course))
-print('HDOP: %s' % str(GPSObj.HDOP))
-print('PDOP: %s' % str(GPSObj.PDOP))
-print('VDOP: %s' % str(GPSObj.VDOP))
-print('GPS_satellites: %s' % str(GPSObj.GPS_satellites))
-print('GNSS_satellites: %s' % str(GPSObj.GNSS_satellites))
-print('Signal: %s' % str(GPSObj.Signal))
-```
-
-8. Calculate the distance between two Points on Earth
-
-```python
-GPSObj1 = GPS()                 # You can also use gsm.GetActualGPS() to get an GPS object
-GPSObj1.Latitude = 52.266949    # Location of Braunschweig, Germany
-GPSObj1.Longitude = 10.524822
-
-GPSObj2 = GPS()
-GPSObj2.Latitude = 36.720005    # Location of Manavgat, Turkey
-GPSObj2.Longitude = 31.546094
-
-print('Distance from Braunschweig to Manavgat in metres:')
-print(GPS.CalculateDeltaP(GPSObj1, GPSObj2))        # this will print 2384660.7 metres
-```
-
-9. Call URL to send some data
-
-```python
-# Init gsmHat
-gsm = GSMHat('/dev/ttyS0', 115200)
-
-# Set the APN Connection data. You will get this from your provider
-# e.g. German Provider 'Congstar'
-gsm.SetGPRSconnection('internet.telekom', 'congstar', 'cs')
-
-# Get actual GPS position
-GPSObj = gsm.GetActualGPS()
-
-# Build url string with data
-url = 'www.someserver.de/myscript.php'
-url += '?time='+str(int(GPSObj.UTC.timestamp()))
-url += '&lat='+str(GPSObj.Latitude)
-url += '&lon='+str(GPSObj.Longitude)
-url += '&alt='+str(GPSObj.Altitude)
-
-gsm.CallUrl(url)    # Send actual position to a webserver
-```
-
-10. Get the Response from a previous URL call
-
-```python
-# Check, if new Response Data is available
-if gsm.UrlResponse_available() > 0:
-    # Read the Response
-    newResponse = gsm.UrlResponse_read()
-    # Do something with it
-```
-
-## What will come in the future?
-- More options to configure the module (e.g. using sim cards with pin code)
-
-## On which platform was pywaveshare developed and tested?
-
-### Hardware:
-- [Raspberry Pi 4, Model B](https://www.raspberrypi.org/products/raspberry-pi-4-model-b/)
-- [GSM/GPRS/GNSS/Bluetooth HAT for Raspberry Pi](https://www.waveshare.com/gsm-gprs-gnss-hat.htm), **later version that allows to power on/off the module by controlling GPIO 4**
-
-### Software:
-* Raspbian (Codename: buster, Release: 10)
-* Kernel: Linux 5.4.51-v7l+
-* Python: 3.12
-
-
-## License
-[See this document.](https://github.com/acmacunlay/pywaveshare/blob/main/LICENSE)
+### 12.1. Terms and Definitions
